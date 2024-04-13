@@ -3,8 +3,6 @@ extends CardState
 const MOUSE_Y_SNAPBACK_THRESHOLD := 138
 
 func enter() -> void:
-	self.card.color.color = Color.WEB_PURPLE
-	self.card.state.text = "AIMING"
 	self.card.targets.clear()
 	var offset := Vector2(self.card.parent.size.x / 2, -self.card.size.y / 2)
 	offset.x -= card.size.x / 2

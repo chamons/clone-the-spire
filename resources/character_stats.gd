@@ -18,7 +18,7 @@ func reset_mana() -> void:
 	self.mana = self.max_mana
 	stats_changed.emit()
 	
-func can_play_card(card: Card) -> bool:
+func can_play_card(card: CardResource) -> bool:
 	return self.mana >= card.cost
 
 func create_instance() -> Resource:

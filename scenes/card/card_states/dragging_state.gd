@@ -7,13 +7,11 @@ func enter() -> void:
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer: # Change to assert
 		self.card.reparent(ui_layer)
-	
-	self.card.color.color = Color.NAVY_BLUE
-	self.card.state.text = "DRAGGING"
-	
+
 	self.minimum_drag_elapsed = false
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
 	threshold_timer.timeout.connect(func(): self.minimum_drag_elapsed = true)
+	self.card.panel.set("theme_override_styles/panel", card.DRAG_STYLEBOX)
 
 func on_input(event: InputEvent) -> void:
 	var single_targeted := card.card.is_single_target()

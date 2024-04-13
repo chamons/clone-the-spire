@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhxyq208x7xmr"]
+[gd_scene load_steps=12 format=3 uid="uid://dhxyq208x7xmr"]
 
 [ext_resource type="Theme" uid="uid://depsvw2yaipwl" path="res://main_theme.tres" id="1_7ck16"]
 [ext_resource type="Script" path="res://scenes/card/card.gd" id="2_j6t4f"]
+[ext_resource type="StyleBox" uid="uid://bxw5sk71j2d7d" path="res://scenes/card/card_base_stylebox.tres" id="3_7ac7o"]
 [ext_resource type="Script" path="res://scenes/card/card_state_machine.gd" id="3_ldiga"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="3_svmt2"]
 [ext_resource type="Script" path="res://scenes/card/card_states/base_state.gd" id="4_lc8ne"]
 [ext_resource type="Script" path="res://scenes/card/card_states/clicked_state.gd" id="5_o6wvo"]
 [ext_resource type="Script" path="res://scenes/card/card_states/dragging_state.gd" id="6_fy4vb"]
@@ -25,7 +27,7 @@ grow_vertical = 2
 theme = ExtResource("1_7ck16")
 script = ExtResource("2_j6t4f")
 
-[node name="Color" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,20 +35,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.117647, 0.247059, 0.00784314, 1)
+theme_override_styles/panel = ExtResource("3_7ac7o")
 
-[node name="State" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "state"
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_svmt2")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="DropDetector" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 monitorable = false
 

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3 uid="uid://b8ke0jky6cokt"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://b8ke0jky6cokt"]
 
+[ext_resource type="Texture2D" uid="uid://ck1t4hdip6xrl" path="res://art/tile_0119.png" id="1_ewj8d"]
 [ext_resource type="Script" path="res://resources/card_resource.gd" id="1_h1j74"]
 
 [resource]
@@ -7,3 +8,6 @@ script = ExtResource("1_h1j74")
 id = "axe_attack"
 type = 0
 target = 1
+cost = 1
+icon = ExtResource("1_ewj8d")
+tooltip_tip = ""
