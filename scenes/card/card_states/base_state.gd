@@ -10,6 +10,7 @@ func enter() -> void:
 	self.card.reparent_requested.emit(card)
 	self.card.pivot_offset = Vector2.ZERO
 	self.card.panel.set("theme_override_styles/panel", card.BASE_STYLEBOX)
+	Events.card_tooltip_hide_requested.emit()
 
 func on_gui_input(event: InputEvent) -> void:
 	if not self.card.can_interact():
@@ -24,9 +25,11 @@ func on_mouse_entered() -> void:
 		return
 
 	self.card.panel.set("theme_override_styles/panel", card.HOVER_STYLEBOX)
+	Events.card_tooltip_requested.emit(self.card)
 	
 func on_mouse_exited() -> void:
 	if not self.card.can_interact():
 		return
 
 	self.card.panel.set("theme_override_styles/panel", card.BASE_STYLEBOX)
+	Events.card_tooltip_hide_requested.emit()

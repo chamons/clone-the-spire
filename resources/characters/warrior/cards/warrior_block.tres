@@ -12,4 +12,4 @@ cost = 1
 effect = 1
 strength = 5
 icon = ExtResource("1_ldh0t")
-tooltip_tip = ""
+tooltip = "[center]Gain [color=\"0044ff\"]5[/color] Block[/center]"

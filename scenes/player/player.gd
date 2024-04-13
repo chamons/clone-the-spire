@@ -6,8 +6,8 @@ extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: StatsUI = $StatsUI as StatsUI
 
-func set_character_stats(value: CharacterStats) -> void:
-	stats = value.create_instance()
+func set_character_stats(new_stats: CharacterStats) -> void:
+	stats = new_stats
 	if not stats.stats_changed.is_connected(update_stats):
 		stats.stats_changed.connect(update_stats)
 	update_player()

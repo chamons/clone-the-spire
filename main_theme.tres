@@ -1,9 +1,52 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://depsvw2yaipwl"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://depsvw2yaipwl"]
 
 [ext_resource type="StyleBox" uid="uid://bxw5sk71j2d7d" path="res://scenes/card/card_base_stylebox.tres" id="1_1pg33"]
 [ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://art/pixel_rpg.ttf" id="1_kfpiv"]
+[ext_resource type="StyleBox" uid="uid://dfrg8fdqd5bgk" path="res://scenes/card/card_hover_stylebox.tres" id="2_7wrhv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1oaa"]
+bg_color = Color(0.631373, 0.34902, 0.321569, 0.498039)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.701961, 0.701961, 0.701961, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7v56y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd6ce"]
+bg_color = Color(0.631373, 0.34902, 0.321569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.560784, 0.52549, 0.247059, 1)
 
 [resource]
 default_font = ExtResource("1_kfpiv")
 default_font_size = 6
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 6
+Button/fonts/font = ExtResource("1_kfpiv")
+Button/styles/disabled = SubResource("StyleBoxFlat_g1oaa")
+Button/styles/focus = SubResource("StyleBoxEmpty_7v56y")
+Button/styles/hover = ExtResource("2_7wrhv")
+Button/styles/normal = ExtResource("1_1pg33")
+Button/styles/pressed = SubResource("StyleBoxFlat_dd6ce")
 Panel/styles/panel = ExtResource("1_1pg33")
+PanelContainer/styles/panel = ExtResource("1_1pg33")

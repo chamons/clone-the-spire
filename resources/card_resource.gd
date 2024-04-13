@@ -16,7 +16,7 @@ enum EffectKind { DAMAGE, BLOCK }
 
 @export_group("Card Visuals")
 @export var icon: Texture
-@export_multiline var tooltip_tip: String
+@export_multiline var tooltip: String
 
 func is_single_target() -> bool:
 	return self.target == Target.SINGLE_ENEMY
@@ -48,11 +48,11 @@ func play(targets: Array[Node], character_stats: CharacterStats) -> void:
 func apply_effect(targets: Array[Node]) -> void:
 	match self.effect:
 		EffectKind.DAMAGE:
-			var effect := DamageEffect.new()
-			effect.amount = self.strength
-			effect.execute(targets)
+			var damage_effect := DamageEffect.new()
+			damage_effect.amount = self.strength
+			damage_effect.execute(targets)
 		EffectKind.BLOCK:
-			var effect := BlockEffect.new()
-			effect.amount = self.strength
-			effect.execute(targets)
+			var block_effect := BlockEffect.new()
+			block_effect.amount = self.strength
+			block_effect.execute(targets)
 	
