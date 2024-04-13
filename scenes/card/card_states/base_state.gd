@@ -4,6 +4,9 @@ func enter() -> void:
 	if not card.is_node_ready():
 		await card.ready
 
+	if card.tween and card.tween.is_running():
+		card.tween.kill()
+
 	self.card.reparent_requested.emit(card)
 	self.card.color.color = Color.WEB_GREEN
 	self.card.state.text = "BASE"
