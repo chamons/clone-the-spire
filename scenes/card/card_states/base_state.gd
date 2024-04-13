@@ -12,12 +12,21 @@ func enter() -> void:
 	self.card.panel.set("theme_override_styles/panel", card.BASE_STYLEBOX)
 
 func on_gui_input(event: InputEvent) -> void:
+	if not self.card.can_interact():
+		return
+
 	if event.is_action_pressed("left_mouse"):
 		self.card.pivot_offset = card.get_global_mouse_position() - card.global_position
 		transition_requested.emit(self, CardState.State.CLICKED)
 
 func on_mouse_entered() -> void:
+	if not self.card.can_interact():
+		return
+
 	self.card.panel.set("theme_override_styles/panel", card.HOVER_STYLEBOX)
 	
 func on_mouse_exited() -> void:
+	if not self.card.can_interact():
+		return
+
 	self.card.panel.set("theme_override_styles/panel", card.BASE_STYLEBOX)

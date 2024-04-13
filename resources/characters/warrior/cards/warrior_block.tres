@@ -9,5 +9,7 @@ id = "warrior_block"
 type = 1
 target = 0
 cost = 1
+effect = 1
+strength = 5
 icon = ExtResource("1_ldh0t")
 tooltip_tip = ""

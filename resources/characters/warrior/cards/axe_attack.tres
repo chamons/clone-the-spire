@@ -9,5 +9,7 @@ id = "axe_attack"
 type = 0
 target = 1
 cost = 1
+effect = 0
+strength = 6
 icon = ExtResource("1_ewj8d")
 tooltip_tip = ""

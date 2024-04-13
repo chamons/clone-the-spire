@@ -12,7 +12,12 @@ func enter() -> void:
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
 	threshold_timer.timeout.connect(func(): self.minimum_drag_elapsed = true)
 	self.card.panel.set("theme_override_styles/panel", card.DRAG_STYLEBOX)
-
+	
+	Events.card_drag_started.emit(self.card)
+	
+func exit() -> void:
+	Events.card_drag_ended.emit(self.card)
+	
 func on_input(event: InputEvent) -> void:
 	var single_targeted := card.card.is_single_target()
 	var mouse_motion := event is InputEventMouseMotion

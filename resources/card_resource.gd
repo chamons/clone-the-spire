@@ -4,12 +4,15 @@ extends Resource
 
 enum Type { ATTACK, SKILL, POWER }
 enum Target { SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE }
+enum EffectKind { DAMAGE, BLOCK }
 
 @export_group("Card Attributes")
 @export var id: String
 @export var type: Type
 @export var target: Target
 @export var cost: int
+@export var effect: EffectKind
+@export var strength: int
 
 @export_group("Card Visuals")
 @export var icon: Texture
@@ -29,11 +32,11 @@ func get_targets(targets: Array[Node]) -> Array[Node]:
 			assert(targets.size() == 1)
 			return targets
 		Target.SELF:
-			return tree.get_nodes_is_group("player")
+			return tree.get_nodes_in_group("player")
 		Target.SINGLE_ENEMY:
-			return tree.get_nodes_is_group("enemies")
+			return tree.get_nodes_in_group("enemies")
 		Target.EVERYONE:
-			return tree.get_nodes_is_group("player") + tree.get_nodes_is_group("enemies")
+			return tree.get_nodes_in_group("player") + tree.get_nodes_in_group("enemies")
 		_:
 			return []  # Change to assert
 
@@ -43,4 +46,13 @@ func play(targets: Array[Node], character_stats: CharacterStats) -> void:
 	apply_effect(self.get_targets(targets))
 	
 func apply_effect(targets: Array[Node]) -> void:
-	pass
+	match self.effect:
+		EffectKind.DAMAGE:
+			var effect := DamageEffect.new()
+			effect.amount = self.strength
+			effect.execute(targets)
+		EffectKind.BLOCK:
+			var effect := BlockEffect.new()
+			effect.amount = self.strength
+			effect.execute(targets)
+	
