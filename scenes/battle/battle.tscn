@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dybh3e7m3w3k7"]
+[gd_scene load_steps=20 format=3 uid="uid://dybh3e7m3w3k7"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_fbhxu"]
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_vydy1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/ui/battle_ui.gd" id="7_y1ytf"]
 [ext_resource type="Script" path="res://scenes/player/player_handler.gd" id="8_2sygm"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_handler.gd" id="9_jpytu"]
+[ext_resource type="Resource" uid="uid://db4t5seylyw0e" path="res://resources/enemies/bat/bat_enemy.tres" id="11_jj7ha"]
 [ext_resource type="PackedScene" uid="uid://b678n6nhe6bhh" path="res://scenes/ui/mana_ui.tscn" id="11_qhdmi"]
 [ext_resource type="PackedScene" uid="uid://bi4ff0jmohtk2" path="res://scenes/ui/tooltip.tscn" id="12_r0to5"]
 [ext_resource type="Theme" uid="uid://depsvw2yaipwl" path="res://main_theme.tres" id="13_38m8o"]
@@ -52,11 +53,20 @@ script = ExtResource("8_2sygm")
 hand = NodePath("../BattleUI/Hand")
 
 [node name="EnemyHandler" type="Node2D" parent="."]
+position = Vector2(-1, 0)
 script = ExtResource("9_jpytu")
 
-[node name="Enemy" parent="EnemyHandler" instance=ExtResource("2_o8e8w")]
-position = Vector2(216, 70)
+[node name="Bat2" parent="EnemyHandler" instance=ExtResource("2_o8e8w")]
+position = Vector2(175, 56)
+stats = ExtResource("11_jj7ha")
+
+[node name="Crab" parent="EnemyHandler" instance=ExtResource("2_o8e8w")]
+position = Vector2(206, 72)
 stats = ExtResource("3_mt672")
+
+[node name="Bat1" parent="EnemyHandler" instance=ExtResource("2_o8e8w")]
+position = Vector2(235, 56)
+stats = ExtResource("11_jj7ha")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_y1ytf")
@@ -109,6 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.443137, 0.443137, 0)
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="RedFlash"]
 wait_time = 0.1

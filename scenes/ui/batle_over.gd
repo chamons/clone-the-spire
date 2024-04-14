@@ -15,7 +15,7 @@ func show_screen(text: String, type: TYPE):
 	continue_button.visible = type == TYPE.WIN
 	restart_button.visible = type == TYPE.LOSE
 	show()
-	get_tree().paused
+	get_tree().paused = true
 
 func _on_continue_button_pressed() -> void:	
 	get_tree().quit()
