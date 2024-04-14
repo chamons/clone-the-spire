@@ -34,11 +34,11 @@ func get_action() -> EnemyAction:
 func get_chance_based_action() -> EnemyAction:
 	var roll := randf_range(0.0, self.total_weight)
 	var actions = get_all_chance_based_actions()
-	return actions.filter(func(action): return action.accumulated_weight > roll).front()
+	return F.front(actions.filter(func(action): return action.accumulated_weight > roll))
 
 func get_first_conditional_action() -> EnemyAction:
 	var performable_actions = get_all_conditional_actions().filter(func(action): return action.is_performable())
-	return performable_actions.front()
+	return F.front(performable_actions)
 	
 func get_all_chance_based_actions() -> Array:
 	return self.get_children().filter(func(action): return action.type == EnemyAction.TYPE.CHANCE_BASE)

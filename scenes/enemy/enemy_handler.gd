@@ -5,7 +5,7 @@ func _ready() -> void:
 	Events.enemy_action_completed.connect(on_enemy_action_completed)
 	
 func on_enemy_action_completed(enemy: Enemy) -> void:
-	var next_enemy : Enemy = get_child(enemy.get_index() + 1) as Enemy
+	var next_enemy : Enemy = F.child_at(self, enemy.get_index() + 1) as Enemy
 	if next_enemy:
 		next_enemy.do_turn()
 	else:
@@ -17,6 +17,6 @@ func reset_enemy_action() -> void:
 		enemy.update_action()
 
 func start_turn() -> void:
-	var first_enemy = get_child(0) as Enemy
+	var first_enemy = F.child_at(self, 0) as Enemy
 	if first_enemy:
 		first_enemy.do_turn()
