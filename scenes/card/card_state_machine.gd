@@ -34,12 +34,10 @@ func on_mouse_exited() -> void:
 		self.current_state.on_mouse_exited()
 
 func _on_transition_requested(from: CardState, to: CardState.State) -> void:
-	if from != self.current_state:
-		return  # Change to assert
+	assert (from == self.current_state)
 
 	var new_state: CardState = states[to]
-	if not new_state:
-		return  # Change to assert
+	assert(new_state != null)
 
 	if self.current_state:
 		self.current_state.exit()

@@ -5,9 +5,7 @@ var amount := 0
 
 func execute(targets: Array[Node]) -> void:
 	for target in targets:
-		# Change to assert
-		if not target:
-			continue
+		assert(target != null)
 		if target is Enemy or target is Player:
 			target.stats.block += amount
 			SoundEffectsPlayer.play(sound)

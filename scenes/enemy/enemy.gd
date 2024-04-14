@@ -51,8 +51,7 @@ func update_stats() -> void:
 	self.stats_ui.update_stats(self.stats)
 	
 func update_enemy() -> void:
-	if not self.stats is Stats: # Change to assert
-		return
+	assert (self.stats is Stats)
 	if not is_inside_tree():
 		await ready
 	self.sprite_2d.texture = self.stats.art

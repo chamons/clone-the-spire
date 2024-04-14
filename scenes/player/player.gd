@@ -15,8 +15,7 @@ func set_character_stats(new_stats: CharacterStats) -> void:
 	update_player()
 	
 func update_player() -> void:
-	if not self.stats is CharacterStats: # Change to assert
-		return
+	assert (self.stats is CharacterStats)
 	if not is_inside_tree():
 		await ready
 	self.sprite_2d.texture = self.stats.art

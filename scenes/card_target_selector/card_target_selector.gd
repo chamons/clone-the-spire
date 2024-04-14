@@ -39,8 +39,7 @@ func ease_out_cubic(number: float) -> float:
 	return 1.0 - pow(1.0 - number, 3.0)
 	
 func _on_card_aim_started(card: Card) -> void:
-	if not card.card.is_single_target(): # Change to assert
-		return
+	assert (card.card.is_single_target())
 	self.targeting = true
 	self.area_2d.monitoring = true
 	self.area_2d.monitorable = true

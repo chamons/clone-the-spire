@@ -5,8 +5,8 @@ var minimum_drag_elapsed := false
 
 func enter() -> void:
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
-	if ui_layer: # Change to assert
-		self.card.reparent(ui_layer)
+	assert(ui_layer != null)
+	self.card.reparent(ui_layer)
 
 	self.minimum_drag_elapsed = false
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)

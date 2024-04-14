@@ -23,9 +23,7 @@ func is_single_target() -> bool:
 	return self.target == Target.SINGLE_ENEMY
 
 func get_targets(targets: Array[Node]) -> Array[Node]:
-	# Change to assert
-	if not targets:
-		return []
+	assert(targets != null)	
 	var tree := targets[0].get_tree()
 	
 	match self.target:
@@ -39,7 +37,8 @@ func get_targets(targets: Array[Node]) -> Array[Node]:
 		Target.EVERYONE:
 			return tree.get_nodes_in_group("player") + tree.get_nodes_in_group("enemies")
 		_:
-			return []  # Change to assert
+			assert(false, "Unknown target type: %s" % [self.target])
+			return []
 
 func play(targets: Array[Node], character_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)
