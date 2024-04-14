@@ -1,0 +1,4 @@
+- Fix errors from usages of front and get_child that return null (but also errors)
+- Make character stats a global?
+- Change checks to asserts
+- Rewrite things using await instead of tweens

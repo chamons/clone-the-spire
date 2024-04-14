@@ -17,6 +17,7 @@ enum EffectKind { DAMAGE, BLOCK }
 @export_group("Card Visuals")
 @export var icon: Texture
 @export_multiline var tooltip: String
+@export var sound: AudioStream
 
 func is_single_target() -> bool:
 	return self.target == Target.SINGLE_ENEMY
@@ -50,9 +51,11 @@ func apply_effect(targets: Array[Node]) -> void:
 		EffectKind.DAMAGE:
 			var damage_effect := DamageEffect.new()
 			damage_effect.amount = self.strength
+			damage_effect.sound = sound
 			damage_effect.execute(targets)
 		EffectKind.BLOCK:
 			var block_effect := BlockEffect.new()
 			block_effect.amount = self.strength
+			block_effect.sound = sound
 			block_effect.execute(targets)
 	
