@@ -30,3 +30,9 @@ func create_instance() -> Resource:
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()
 	return instance
+
+func take_damage(damage: int) -> void:
+	var inital_health := health
+	super.take_damage(damage)
+	if inital_health > health:
+		Events.player_hit.emit()
