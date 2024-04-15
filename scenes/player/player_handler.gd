@@ -6,13 +6,12 @@ const HAND_DISCARD_INTERVAL := 0.25
 
 @export var hand: Hand
 
-var character_stats: CharacterStats
+@export var character_stats: CharacterStats
 
 func _ready() -> void:
 	Events.card_played.connect(on_card_played)
 
-func start_battle(stats: CharacterStats):
-	self.character_stats = stats
+func start_battle():
 	self.character_stats.draw_pile = character_stats.deck.duplicate(true)
 	self.character_stats.draw_pile.shuffle()
 	self.character_stats.discard = CardPile.new()

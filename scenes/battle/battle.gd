@@ -13,15 +13,16 @@ func _ready() -> void:
 	var stats : CharacterStats = self.character_stats.create_instance()
 	self.battle_ui.set_character_stats(stats)
 	self.player.set_character_stats(stats)
+	self.player_handler.character_stats = stats
 	
 	Events.player_died.connect(self.on_player_died)
 	
-	run_battle(stats)
+	run_battle()
 
-func run_battle(character: CharacterStats) -> void:
+func run_battle() -> void:
 	get_tree().paused = false
 	MusicPlayer.play(music, true)
-	player_handler.start_battle(character)
+	player_handler.start_battle()
 	
 	while true:
 		enemy_handler.update_enemy_actions()

@@ -26,11 +26,11 @@ func move_in_front_of_player() -> void:
 	var in_front := target.global_position + Vector2.RIGHT * 32
 	var tween := self.create_tween().set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(enemy, "global_position", in_front, 0.4)
-	tween.tween_interval(0.35)
+	tween.tween_interval(0.05)
 	await tween.finished
 	
 func move_back_to_position() -> void:
 	var tween := self.create_tween().set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(enemy, "global_position", last_target_starting_position, 0.4)
-	tween.tween_interval(0.25)
+	tween.tween_interval(0.05)
 	await tween.finished
