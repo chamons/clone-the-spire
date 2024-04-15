@@ -8,13 +8,7 @@ signal card_drag_ended(card: Card)
 signal card_tooltip_requested(card: Card)
 signal card_tooltip_hide_requested()
 
-signal player_hand_draw()
-signal player_hand_discarded()
-signal player_turn_ended()
 signal player_died()
 signal player_hit()
-
-signal enemy_action_completed(enemy: Enemy)
-signal enemy_turn_ended()
 
 signal battle_over_screen_requested(text: String, type: BattleOverPanel.TYPE)

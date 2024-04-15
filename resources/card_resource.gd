@@ -43,7 +43,7 @@ func get_targets(targets: Array[Node]) -> Array[Node]:
 func play(targets: Array[Node], character_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)
 	character_stats.mana -= self.cost
-	apply_effect(self.get_targets(targets))
+	await apply_effect(self.get_targets(targets))
 	
 func apply_effect(targets: Array[Node]) -> void:
 	match self.effect:
@@ -51,10 +51,10 @@ func apply_effect(targets: Array[Node]) -> void:
 			var damage_effect := DamageEffect.new()
 			damage_effect.amount = self.strength
 			damage_effect.sound = sound
-			damage_effect.execute(targets)
+			await damage_effect.execute(targets)
 		EffectKind.BLOCK:
 			var block_effect := BlockEffect.new()
 			block_effect.amount = self.strength
 			block_effect.sound = sound
-			block_effect.execute(targets)
+			await block_effect.execute(targets)
 	

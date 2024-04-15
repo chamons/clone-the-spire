@@ -10,3 +10,8 @@ func update_intent(intent: Intent) -> void:
 	number.text = intent.number
 	number.visible = number.text.length() > 0
 	show()
+
+func clear_intent() -> void:
+	icon.visible = false
+	number.visible = false
+	hide()

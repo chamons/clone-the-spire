@@ -1,3 +1,2 @@
 - Make character stats a global?
-- Rewrite things using await instead of tweens
 - Rewrite AI to be data driven

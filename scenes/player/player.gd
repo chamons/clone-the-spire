@@ -24,20 +24,17 @@ func update_player() -> void:
 func update_stats():
 	self.stats_ui.update_stats(self.stats)
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int):
 	if self.stats.health <= 0:
 		return
 
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
 
-	var tween := create_tween()
-	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
-	tween.tween_callback(stats.take_damage.bind(damage))
-	tween.tween_interval(0.17)
-	tween.finished.connect(func():
-		sprite_2d.material = null
-
-		if stats.health <= 0:
-			Events.player_died.emit()
-			queue_free()
-	)
+	await Shaker.shake(self, 16, 0.15)
+	await stats.take_damage(damage)
+	await get_tree().create_timer(0.17).timeout
+	
+	sprite_2d.material = null
+	if stats.health <= 0:
+		Events.player_died.emit()
+		queue_free()

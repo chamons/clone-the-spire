@@ -1,6 +1,6 @@
 extends Node
 
-func shake(object: Node2D, strength: float, duration: float = 0.2) -> void:
+func shake(object: Node2D, strength: float, duration: float = 0.2):
 	if not object:
 		return
 	var origin_position := object.position

@@ -16,19 +16,16 @@ func start_battle(stats: CharacterStats):
 	self.character_stats.draw_pile = character_stats.deck.duplicate(true)
 	self.character_stats.draw_pile.shuffle()
 	self.character_stats.discard = CardPile.new()
-	self.start_turn()
 
 func start_turn() -> void:
 	self.character_stats.block = 0
 	self.character_stats.reset_mana()
-	draw_cards(self.character_stats.cards_per_turn)
+	await draw_cards(self.character_stats.cards_per_turn)
 
 func draw_cards(amount: int) -> void:
-	var tween := self.create_tween()
 	for card in range(amount):
-		tween.tween_callback(draw_card)
-		tween.tween_interval(HAND_DRAW_INTERVAL)
-	tween.finished.connect(func(): Events.player_hand_draw.emit())
+		draw_card()
+		await get_tree().create_timer(HAND_DRAW_INTERVAL).timeout
 
 func draw_card() -> void:
 	reshuffle_deck_from_discard()
@@ -36,15 +33,13 @@ func draw_card() -> void:
 
 func end_turn() -> void:
 	self.hand.disable_hand()
-	self.discard_cards()
+	await self.discard_cards()
 
 func discard_cards() -> void:
-	var tween := self.create_tween()
 	for card in hand.get_children():
-		tween.tween_callback(self.character_stats.discard.add_card.bind(card.card))
-		tween.tween_callback(self.hand.discard_card.bind(card))
-		tween.tween_interval(HAND_DISCARD_INTERVAL)
-	tween.finished.connect(func(): Events.player_hand_discarded.emit())
+		self.character_stats.discard.add_card(card.card)
+		self.hand.discard_card(card)
+		await get_tree().create_timer(HAND_DISCARD_INTERVAL).timeout
 
 func reshuffle_deck_from_discard() -> void:
 	if not self.character_stats.draw_pile.empty():

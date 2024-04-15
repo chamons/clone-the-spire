@@ -17,7 +17,7 @@ func set_block(value: int) -> void:
 	block = clampi(value, 0, 999)
 	stats_changed.emit()
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int):
 	if damage <= 0:
 		return
 	var initial_damage = damage

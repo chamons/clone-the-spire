@@ -22,4 +22,7 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	call_deferred("deferred_reload_current_scene")
+
+func deferred_reload_current_scene() -> void:
 	get_tree().reload_current_scene()
